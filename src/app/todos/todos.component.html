@@ -1,0 +1,38 @@
+<div class="todo-list" >
+  <div class="todo-list__input-block">
+  <input
+    #newItem
+    placeholder="Добавьте задачу"
+    (keyup.enter)="addItem(newItem.value);"
+    class="todo-list__tasks-input"
+  />
+  <button class="todo-list__add-btn" (click)="addItem(newItem.value)">Добавить</button>
+  </div>
+  <ul class="todo-list__items">
+  <li class="todo-list__item" *ngFor="let todoItem of todos; let i = index">
+
+    <label class="todo-list__label">
+    <input class="todo-list__checkbox" type="checkbox"
+           [checked]="todoItem.completed"
+           (change)="todoItem.completed = !todoItem.completed" >
+
+    <span class="todo-list__content" [class.todo-list__checkbox--done]="todoItem.completed">
+    <span class="todo-list__num">{{ i + 1 }} </span>
+      <span class="todo-list__text">{{ todoItem.title }}</span>
+    </span>
+    </label>
+    <div class="todo-list__group-btn">
+    <button class="todo-list__edit-btn" (click)="editItem(todoItem)">&#9998;</button>
+    <button class="todo-list__remove-btn" (click)="removeItem(todoItem.id)">&#10006;</button>
+    </div>
+  </li>
+  </ul>
+  <div class="todo-list__no-records" *ngIf="todos.length==0">
+   <strong>Задач нет :)</strong>
+  </div>
+  <!-- This section shows only if user clicks Edit button -->
+  <hr>
+<span class="todo-list__count">
+ Всего задач {{todos.length}}
+</span>
+</div>

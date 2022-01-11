@@ -1,0 +1,16 @@
+
+.todo-list__items {
+  list-style: none;
+  padding: 0;
+}
+
+.todo-list__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 7px;
+}
+
+.todo-list__checkbox--done {
+  text-decoration: line-through;
+}
